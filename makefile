@@ -42,7 +42,7 @@ $(OUTPUT_DIR)/%: %
 ## Make actual folder, then symlink things inside
 # Factorio will refuse to load the mod if the actual mod folder is a symlink,
 # but appears to load symlinks inside mod folder just fine.
-symlink: package-copy cleandest
+symlink: package-copy uninstall
 	mkdir -p $(MOD_DIR)
 	ln -st $(MOD_DIR) $(PWD)/$(OUTPUT_DIR)/*
 
@@ -64,12 +64,12 @@ package: package-copy $(OUT_FILES) nodebug
 	@cd $(BUILD_DIR) && zip -rq $(OUTPUT_NAME).zip $(OUTPUT_NAME)
 	@echo $(OUTPUT_NAME).zip ready
 
-install: package cleandest
+install: package uninstall
 	cp $(BUILD_DIR)/$(OUTPUT_NAME).zip $(MOD_DIR).zip
 
 clean:
-	@rm -rf $(BUILD_DIR)
 	@echo Removing Build Directory.
+	@rm -rf $(BUILD_DIR)
 
-cleandest:
+uninstall:
 	rm -rf $(MODS_DIRECTORY)/$(PACKAGE_NAME)*

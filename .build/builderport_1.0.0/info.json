@@ -1,0 +1,10 @@
+{
+  "name": "builderport",
+  "version": "1.0.0",
+  "factorio_version": "0.16",
+  "title": "Builderport",
+  "author": "mkaito",
+  "homepage": "http://github.com/mkaito/factorio-builderport",
+  "dependencies": ["base"],
+  "description": "Roboports with zero logistics range but huge construction range"
+}
